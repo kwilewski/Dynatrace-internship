@@ -15,20 +15,20 @@ public class RateManager {
 
     public RateManager(){}
 
-    public double getExchangeRate(String date, String code){
+    public float getExchangeRate(String date, String code){
         if (!checkCode(code)) throw new BadRequestException("Wrong currency code");
         ExchangeRateTask task = new ExchangeRateTask(date, code);
         return task.getExchangeRate();
     }
 
-    public double[] getAverageRate(String code, int count){
+    public float[] getAverageRate(String code, int count){
         if (!checkCode(code)) throw new BadRequestException("Wrong currency code");
         if (count < 1) throw new BadRequestException("Incorrect number of quotation");
         MinMaxRateTask task = new MinMaxRateTask(code, count);
         return task.getMinMaxRate();
     }
 
-    public double getMajorDifference(String code, int count){
+    public float getMajorDifference(String code, int count){
         if (!checkCode(code)) throw new BadRequestException("Wrong currency code");
         if (count < 1) throw new BadRequestException("Incorrect number of quotation");
         MajorDifferenceTask task = new MajorDifferenceTask(code, count);

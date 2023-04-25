@@ -12,9 +12,9 @@ public class MinMaxRateTask {
         rateSeries = nbpClient.getRateSeries('A', code, count);
     }
 
-    public double[] getMinMaxRate(){
+    public float[] getMinMaxRate(){
         if (rateSeries.getRates().size() == 0) throw new BadRequestException("Request incorrect");
-        if(rateSeries.getRates().size() == 1) return new double[]{rateSeries.getRates().get(0).getMid(), rateSeries.getRates().get(0).getMid()};
+        if(rateSeries.getRates().size() == 1) return new float[]{rateSeries.getRates().get(0).getMid(), rateSeries.getRates().get(0).getMid()};
 
         // setting initial highest and lowest rates
         float min, max;
@@ -32,7 +32,7 @@ public class MinMaxRateTask {
             else if (rateSeries.getRates().get(i).getMid() > max) max = rateSeries.getRates().get(i).getMid();
         }
 
-        return new double[]{min, max};
+        return new float[]{min, max};
     }
 
 

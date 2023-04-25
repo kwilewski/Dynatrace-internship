@@ -14,7 +14,7 @@ class NbpServiceApplicationTest {
 
 	@Test
 	void testExchangeRate() {
-		assertEquals(new ResponseEntity<>(4.610899925231934d, HttpStatus.OK), new NbpServiceController().getExchangeRate("2023-04-20", "eur"));
+		assertEquals(new ResponseEntity<>(4.6109f, HttpStatus.OK), new NbpServiceController().getExchangeRate("2023-04-20", "eur"));
 		assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), new NbpServiceController().getExchangeRate("2021-11-14", "eur")); 						// holiday
 		assertEquals(new ResponseEntity<>(HttpStatus.BAD_REQUEST), new NbpServiceController().getExchangeRate("2021-11-15", "shdfhh"));
 	}

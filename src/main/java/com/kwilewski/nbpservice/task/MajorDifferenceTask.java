@@ -14,7 +14,7 @@ public class MajorDifferenceTask {
 
     public float getMajorRateDifference(){
         if (rateSeries.getRates().size() == 0) throw new BadRequestException("Request incorrect");
-        if(rateSeries.getRates().size() == 1) return rateSeries.getRates().get(0).getAsk() - rateSeries.getRates().get(0).getBid();
+        if (rateSeries.getRates().size() == 1) return rateSeries.getRates().get(0).getAsk() - rateSeries.getRates().get(0).getBid();
 
         float diff = rateSeries.getRates().get(0).getAsk() - rateSeries.getRates().get(0).getBid();
         //searching for the highest difference
@@ -23,6 +23,7 @@ public class MajorDifferenceTask {
                 diff = rateSeries.getRates().get(i).getAsk() - rateSeries.getRates().get(i).getBid();
             }
         }
-        return diff;
+
+        return (float) (Math.round(diff * 10000) / 10000.0);
     }
 }

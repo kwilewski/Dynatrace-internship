@@ -18,7 +18,7 @@ public class NbpServiceController {
      * Given a date  and a currency code, provide its average exchange rate.
      * @param date (formatted YYYY-MM-DD)
      * @param code as a String from table A of NBP API
-     * @return ResponseEntity with (double) exchange rate
+     * @return ResponseEntity with (float) exchange rate
      */
     @GetMapping(value = "/exchange-rate/{date}/{code}")
     @ResponseBody
@@ -41,7 +41,7 @@ public class NbpServiceController {
      * Given a currency code and the number of last quotations count, provide the max and min average value.
      * @param code as a String from table A of NBP API
      * @param count as an int, count < 255
-     * @return ResponseEntity with (double[]) {min, max} rate
+     * @return ResponseEntity with (float[]) {min, max} rate
      */
     @GetMapping(value = "/min-max/{code}/{count}")
     public ResponseEntity<?> getMinMaxRate(@PathVariable("code") String code,
@@ -63,7 +63,7 @@ public class NbpServiceController {
      * Given a currency code and the number of last quotations count, provide the major difference between the buy and ask rate.
      * @param code as a String from table A of NBP API
      * @param count as an int, count < 255
-     * @return ResponseEntity with (double) major difference between the buy and ask rate
+     * @return ResponseEntity with (float) major difference between the buy and ask rate
      */
     @GetMapping(value = "/rate-difference/{code}/{count}")
     public ResponseEntity<?> getMajorRateDifference(@PathVariable("code") String code,
